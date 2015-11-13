@@ -2,6 +2,7 @@
   'use strict';
 
   let cluster = require('cluster');
+  // Condition that checks if we are on the master process, before creating child processes.
   if (cluster.isMaster) {
     // Fork all the workers.
     let numCPUs = require('os').cpus().length;
