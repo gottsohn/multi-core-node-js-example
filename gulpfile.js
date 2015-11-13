@@ -7,20 +7,20 @@ let gulp = require('gulp'),
     styles: 'app/styles/*.+(less|css)'
   };
 
-gulp.task('test:bend', function() {
+gulp.task('test:bend', () => {
   return gulp.src(paths.serverTests)
     .pipe(mocha({
       reporter: 'spec'
     }))
-    .once('error', function() {
+    .once('error', () => {
       process.exit(1);
     })
-    .once('end', function() {
+    .once('end', () => {
       process.exit();
     });
 });
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
   return gulp.src(['./index.js', +
       './server/**/*.js', './tests/**/*.js'
     ])
@@ -28,14 +28,14 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('nodemon', function() {
+gulp.task('nodemon', () => {
   nodemon({
       script: 'index.js',
       ext: 'js',
       ignore: ['public/', 'node_modules/']
     })
     .on('change', ['lint'])
-    .on('restart', function() {
+    .on('restart', () => {
       console.log('>> node restart');
     });
 });
