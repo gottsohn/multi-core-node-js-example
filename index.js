@@ -16,7 +16,8 @@
       console.log("Running with process ID: " + cluster.workers[id].process.pid);
     });
 
-    cluster.on('exit', (worker, code, signal) => {
+    // arguments are worker, code, signal
+    cluster.on('exit', (worker) => {
       const RESTART_DELAY = parseInt(process.env.RESTART_DELAY, 10) || 30000;
       console.log('Process ID: ' + worker.process.pid + ' died, creating new worker in ' + (RESTART_DELAY / 1000) + ' seconds');
       setTimeout(cluster.fork, RESTART_DELAY);

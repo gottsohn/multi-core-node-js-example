@@ -12,6 +12,9 @@
   "noarg": true,
   "noempty": true,
   "nonew": true,
+  "esversion": 6,
+  "esnext": true,
+  "moz": true,
   "predef": [
     "$",
     "jQuery",
@@ -37,4 +40,3 @@
   "undef": true,
   "unused": true
 }
-
