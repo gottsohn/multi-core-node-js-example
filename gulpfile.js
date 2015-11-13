@@ -5,8 +5,7 @@
     nodemon = require('gulp-nodemon'),
     mocha = require('gulp-mocha'),
     paths = {
-      serverTests: ['./tests/server/**/*.spec.js'],
-      styles: 'app/styles/*.+(less|css)'
+      serverTests: ['./tests/server/**/*.spec.js']
     };
 
   gulp.task('test:bend', () => {
