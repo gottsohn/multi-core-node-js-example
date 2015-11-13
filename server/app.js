@@ -1,4 +1,4 @@
-(function() {
+(() => {
   'use strict';
   const ENV = process.env.NODE_ENV || 'development'
   let
@@ -37,7 +37,7 @@
     }));
 
     // Dummy route to return JSON
-    app.get('/*', function(req, res) {
+    app.get('/*', (req, res) => {
       res.send(require('http').STATUS_CODES);
     });
 
