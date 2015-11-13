@@ -1,7 +1,5 @@
 let gulp = require('gulp'),
   jshint = require('jshint'),
-  path = require('path'),
-  source = require('vinyl-source-stream'),
   nodemon = require('gulp-nodemon'),
   mocha = require('gulp-mocha'),
   paths = {
