@@ -2,6 +2,7 @@
   'use strict';
   let gulp = require('gulp'),
     jshint = require('jshint'),
+    cover = require('gulp-coverage'),
     nodemon = require('gulp-nodemon'),
     mocha = require('gulp-mocha'),
     paths = {
@@ -10,14 +11,21 @@
 
   gulp.task('test:bend', () => {
     return gulp.src(paths.serverTests)
+      .pipe(cover.instrument({
+        pattern: ['server/app.js'],
+        debugDirectory: 'debug'
+      }))
       .pipe(mocha({
         reporter: 'spec'
       }))
-      .once('error', () => {
-        process.exit(1);
+      .once('error', (err) => {
+        throw new Error(err);
       })
+      .pipe(cover.gather())
+      .pipe(cover.format())
+      .pipe(gulp.dest('reports'))
       .once('end', () => {
-        process.exit();
+        process.exit(0);
       });
   });
 
