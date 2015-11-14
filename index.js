@@ -6,7 +6,7 @@
     // Fork all the workers.
     const numCPUs = require('os').cpus().length;
     //  / (parseInt(process.env.CLUSTER_DIVIDER, 10) || 1);
-    console.log('Process MAster', process.pid);
+    console.log('Process Master', process.pid);
     for (let i = 0; i < numCPUs; i++) {
       cluster.fork();
     }
