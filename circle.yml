@@ -1,6 +1,5 @@
 dependencies:
  pre:
-  - bower install
  post:
   - npm install module-deps
   - npm install gulp -g
