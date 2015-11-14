@@ -1,7 +1,7 @@
 Running Node JS (with Express) on Multiple Threads
 ==================================================
 
-[![Code Climate](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example/badges/gpa.svg)](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example) [![Test Coverage](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example/badges/coverage.svg)](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example/coverage) [![Circle CI](https://circleci.com/gh/andela-gukpere/multi-core-node-js-example.svg?style=svg)](https://circleci.com/gh/andela-gukpere/multi-core-node-js-example)
+[![Code Climate](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example/badges/gpa.svg)](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example) [![Test Coverage](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example/badges/coverage.svg)](https://codeclimate.com/github/andela-gukpere/multi-core-node-js-example/coverage) [![Circle CI](https://circleci.com/gh/andela-gukpere/multi-core-node-js-example.svg?style=svg)](https://circleci.com/gh/andela-gukpere/multi-core-node-js-example) [![Build Status](https://semaphoreci.com/api/v1/projects/6523fb33-acbd-4264-ba1e-daded0c2e048/603523/badge.svg)](https://semaphoreci.com/godson/multi-core-node-js-example)
 
 
 This is a simple example showing how to make NodeJS utilize your processor threads.
