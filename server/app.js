@@ -1,8 +1,8 @@
 (() => {
   'use strict';
-  const ENV = process.env.NODE_ENV || 'development'
-  let
-    express = require('express'),
+  const ENV = process.env.NODE_ENV || 'development';
+  let express = require('express'),
+    cluster = require('cluster'),
     moment = require('moment'),
     app = express(),
     bodyParser = require('body-parser');
@@ -26,6 +26,7 @@
     app.use((err, req, res, next) => {
       console.error(err.stack);
       res.status(500).send('Something broke!');
+      next();
     });
 
     // to support JSON-encoded bodies
@@ -36,8 +37,16 @@
       extended: true
     }));
 
+    app.get('/cluster', (req, res) =>
+      res.send({
+        isMaster: cluster.isMaster,
+        isWorker: cluster.isWorker,
+        workers: cluster.workers,
+        pid: process.pid
+      })
+    );
     // Dummy route to return JSON
-    app.get('/*', (req, res) => {
+    app.get('/', (req, res) => {
       res.send(require('http').STATUS_CODES);
     });
 
