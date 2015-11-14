@@ -1,11 +1,10 @@
 (() => {
   'use strict';
-  const APP_URL = 'http://localhost:' + (process.env.PORT || 5555) + '/';
-  //require('../../');
+  const APP_URL = 'http://localhost:' + (process.env.PORT || 5555) + '/',
+    THREAD_COUNT = require('os').cpus().length;
+
   let request = require('superagent'),
     expect = require('expect.js');
-
-
 
   describe('Node JS Multi-Threaded Instance', () => {
     describe('Instance', () => {
@@ -33,19 +32,25 @@
           if (pids.indexOf(body.pid) === -1) {
             pids.push(body.pid);
           }
+
           if (count === requestCount) {
-            done();
             console.log('Process IDs', pids);
             expect(pids).to.not.be.empty();
-            expect(pids.length).to.be.greatherThan(1);
-            if (requestCount > 4) {
-              expect(pids.length).to.be(4);
+            expect(pids.length).to.be.greaterThan(1);
+            if (requestCount > THREAD_COUNT) {
+              // All threads will be used if the number of requests are equal or more then the threads
+              expect(pids.length).to.be(THREAD_COUNT);
             } else {
+              // IF the requests are less than the number of threads, threads are used for each request only
               expect(pids.length).to.be(requestCount);
             }
+            done();
           }
         };
 
+        console.log('You have', THREAD_COUNT, 'CPU thread(s)');
+
+        // Make simultaneous requests to the server to force load balacing.
         for (let i = 0; i < requestCount; i++) {
           console.log('Making request number', i + 1);
           request.get(APP_URL + 'cluster').
