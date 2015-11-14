@@ -4,7 +4,7 @@
   "description": "Example using node-js cluster and express",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "node index.js &\ngulp test\npkill node"
   },
   "repository": {
     "type": "git",
