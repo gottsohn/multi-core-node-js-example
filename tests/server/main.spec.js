@@ -26,27 +26,27 @@
       it('should load balance on threads using various processes', done => {
         let count = 0,
           requestCount = 20,
-          pids = [];
-        let cb = (body) => {
-          count++;
-          if (pids.indexOf(body.pid) === -1) {
-            pids.push(body.pid);
-          }
-
-          if (count === requestCount) {
-            console.log('Process IDs', pids);
-            expect(pids).to.not.be.empty();
-            expect(pids.length).to.be.greaterThan(1);
-            if (requestCount > THREAD_COUNT) {
-              // All threads will be used if the number of requests are equal or more then the threads
-              expect(pids.length).to.be(THREAD_COUNT);
-            } else {
-              // IF the requests are less than the number of threads, threads are used for each request only
-              expect(pids.length).to.be(requestCount);
+          pids = [],
+          cb = (body) => {
+            count++;
+            if (pids.indexOf(body.pid) === -1) {
+              pids.push(body.pid);
             }
-            done();
-          }
-        };
+
+            if (count === requestCount) {
+              console.log('Process IDs', pids);
+              expect(pids).to.not.be.empty();
+              expect(pids.length).to.be.greaterThan(1);
+              if (requestCount > THREAD_COUNT) {
+                // All threads will be used if the number of requests are equal or more then the threads
+                expect(pids.length).to.be(THREAD_COUNT);
+              } else {
+                // If the requests are less than the number of threads, threads are used for each request only
+                expect(pids.length).to.be(requestCount);
+              }
+              done();
+            }
+          };
 
         console.log('You have', THREAD_COUNT, 'CPU thread(s)');
 
