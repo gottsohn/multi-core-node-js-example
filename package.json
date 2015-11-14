@@ -6,6 +6,10 @@
   "scripts": {
     "test": "node index.js &\ngulp test\npkill node"
   },
+  "engines": {
+    "node": "4.1.2",
+    "npm": "3.3.6"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andela-gukpere/multi-core-node-js-example.git"
