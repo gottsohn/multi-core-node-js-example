@@ -12,8 +12,8 @@
     nodemon = require('gulp-nodemon'),
     mocha = require('gulp-mocha'),
     paths = {
-      serverTests: ['./tests/server/**/*.spec.js'],
-      app: ['./server/**.js']
+      serverTests: ['./tests/*.spec.js'],
+      app: ['./server/*.js']
     };
 
 
@@ -23,7 +23,7 @@
       .pipe(istanbul.hookRequire());
   });
 
-  gulp.task('test:bend', ['pre-test'], () => {
+  gulp.task('test:server', ['pre-test'], () => {
     return gulp.src(paths.serverTests)
       .pipe(mocha({
         reporter: 'spec'
@@ -31,9 +31,9 @@
       .once('error', (err) => {
         throw new Error(err);
       })
-      .pipe(istanbul({
-        includeUntested: true
-      }))
+      // .pipe(istanbul({
+      //   includeUntested: true
+      // }))
       .pipe(istanbul.writeReports({
         dir: './coverage',
         reporters: ['lcov'],
@@ -41,19 +41,18 @@
           dir: './coverage'
         }
       }))
-      .pipe(gulp.dest('reports'))
       .once('end', () => {});
   });
 
   gulp.task('lint', () => {
-    return gulp.src(['./index.js',
+    return gulp.src(['./index.js', 'gulpfile.js',
         './server/**/*.js', './tests/**/*.js'
       ])
       .pipe(jshint())
       .pipe(jshint.reporter('default'));
   });
 
-  gulp.task('codeclimate-reporter', ['test:bend'], function() {
+  gulp.task('codeclimate-reporter', ['test:server'], function() {
     return gulp.src('./coverage/lcov.info', {
         read: false
       })
