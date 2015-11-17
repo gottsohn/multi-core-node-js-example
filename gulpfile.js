@@ -31,9 +31,9 @@
       .once('error', (err) => {
         throw new Error(err);
       })
-      // .pipe(istanbul({
-      //   includeUntested: true
-      // }))
+      .pipe(istanbul({
+        includeUntested: true
+      }))
       .pipe(istanbul.writeReports({
         dir: './coverage',
         reporters: ['lcov'],
@@ -52,8 +52,8 @@
       .pipe(jshint.reporter('default'));
   });
 
-  gulp.task('codeclimate-reporter', ['test:server'], function() {
-    return gulp.src('./coverage/lcov.info', {
+  gulp.task('codeclimate-reporter', ['test:server'], () => {
+    return gulp.src('coverage/lcov.info', {
         read: false
       })
       .pipe(reporter({

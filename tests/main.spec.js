@@ -25,7 +25,7 @@
 
       it('should load balance on threads using various processes', done => {
         let count = 0,
-          requestCount = 20,
+          requestCount = 200,
           pids = [],
           cb = (body) => {
             count++;
