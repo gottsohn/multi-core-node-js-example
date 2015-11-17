@@ -4,7 +4,7 @@
   "description": "Example using node-js cluster and express",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js &\ngulp test\npkill node"
+    "test": "node index.js &\ngulp test"
   },
   "engines": {
     "node": "4.1.2",
