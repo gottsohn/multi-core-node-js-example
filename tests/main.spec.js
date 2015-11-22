@@ -27,7 +27,7 @@
         let count = 0,
           requestCount = 200,
           pids = [],
-          cb = (body) => {
+          cb = body => {
             count++;
             if (pids.indexOf(body.pid) === -1) {
               pids.push(body.pid);
@@ -49,7 +49,6 @@
           };
 
         console.log('You have', THREAD_COUNT, 'CPU thread(s)');
-
         // Make simultaneous requests to the server to force load balacing.
         for (let i = 0; i < requestCount; i++) {
           console.log('Making request number', i + 1);
@@ -61,7 +60,6 @@
               cb(res.body);
             });
         }
-
       });
     });
   });

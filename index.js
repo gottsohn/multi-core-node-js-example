@@ -16,7 +16,7 @@
     });
 
     // arguments are worker, code, signal
-    cluster.on('exit', (worker) => {
+    cluster.on('exit', worker => {
       const RESTART_DELAY = parseInt(process.env.RESTART_DELAY, 10) || 30000;
       console.log('Process ID: ' + worker.process.pid + ' died, creating new worker in ' +
         (RESTART_DELAY / 1000) + ' seconds');
@@ -25,7 +25,7 @@
   } else {
     const PORT = process.env.PORT || 5555;
     require('./server/app')(process.cwd(), app => {
-      app.listen(PORT, (err) => {
+      app.listen(PORT, err => {
         console.log(err || 'Server running on ', PORT, ' Process ID: ' + process.pid);
       });
     });
