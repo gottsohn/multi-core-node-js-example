@@ -28,7 +28,7 @@
       .pipe(mocha({
         reporter: 'spec'
       }))
-      .once('error', (err) => {
+      .once('error', err => {
         throw new Error(err);
       })
       .pipe(istanbul({
