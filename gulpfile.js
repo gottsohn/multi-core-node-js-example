@@ -16,7 +16,6 @@
       app: ['./server/*.js']
     };
 
-
   gulp.task('pre-test', () => {
     return gulp.src(paths.app)
       .pipe(istanbul())
