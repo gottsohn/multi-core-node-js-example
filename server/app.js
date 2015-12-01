@@ -17,7 +17,8 @@
     app.use((req, res, next) => {
       // log each request in development/staging ENVironment
       if (ENV !== 'production') {
-        console.log(moment().format('HH:MM'), req.method, req.url, req.socket.bytesRead, 'process:', process.pid);
+        console.log(moment().format('HH:MM'), req.method, req.url,
+          req.socket.bytesRead, 'process:', process.pid);
       }
       next();
     });

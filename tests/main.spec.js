@@ -38,10 +38,12 @@
               expect(pids).to.not.be.empty();
               expect(pids.length).to.be.greaterThan(1);
               if (requestCount > THREAD_COUNT) {
-                // All threads will be used if the number of requests are equal or more then the threads
+                // All threads will be used if the number of
+                // requests are equal or more then the threads
                 expect(pids.length).to.be(THREAD_COUNT);
               } else {
-                // If the requests are less than the number of threads, threads are used for each request only
+                // If the requests are less than the number of
+                // threads, threads are used for each request only
                 expect(pids.length).to.be(requestCount);
               }
               done();
