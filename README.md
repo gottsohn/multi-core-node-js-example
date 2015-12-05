@@ -23,7 +23,7 @@ In line _8_ of _index.js_ you should have
 let numCPUs = require('os').cpus().length / (parseInt(process.env.CLUSTER_DIVIDER, 10) || 1);
 ```
 
-Where _CLUSTER\_DIVIDER_ is a config variable that determines the divider to be used. For Heroku most packages (Free and Standard 1X), you get 8 threads on a **Intel(R) Xeon(R) CPU E5-2670 v2 @ 2.50GHz**, so you'll want to use a divider of **4** (meaning you use only 2 threads) to avoid consuming all 512 MB of RAM. If your plan is up to 1 GB RAM then 4 threads will be fine.
+Where _CLUSTER\_DIVIDER_ is a config variable that determines the divider to be used. For Heroku most packages (Free and Standard 1X), you get 8 threads on a **Intel(R) Xeon(R) CPU E5-2670 v2 @ 2.50GHz**, so you'll want to use a divider of **2** (meaning you use only 4 threads) to avoid consuming all 512 MB of RAM. If your plan is up to 1 GB RAM then 8 threads will be fine.
 
 You might want to checkout `./tests/main.spec.js` and see how we test the multi-threading.
 
